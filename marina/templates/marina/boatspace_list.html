@@ -1,0 +1,20 @@
+{% extends "marina/base.html" %}
+
+{% load static %}
+{% block background_image %}{% static 'marina/images/auth.jpg' %}{% endblock %}
+
+{% block content %}
+  <h1>Spaces Available</h1>
+  {% if boatspace_list %}
+    <ul>
+      {% for boatspace in boatspace_list %}
+      <li>
+        <a href="{{ boatspace.get_absolute_url }}">{{ boatspace.id }}</a>
+        ({{boatspace.availability_status}})
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no spaces available.</p>
+  {% endif %}
+{% endblock %}

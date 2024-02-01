@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta name="authors" content="Julia Veenkamp">
+        <meta name="description" content="{% block description %}Default Description{% endblock %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'marina/css/styles.css' %}"/>
+        <style>
+            html {
+                background-image: url('{% block background_image %}{% endblock %}');
+                /* Add other background styles as needed */
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% block sidebar %}
+            <nav role="navigation">
+                <ul>
+                    <li id="new-acc"><a href="{% url 'authentication' %}">SIGN UP</a></li>
+                    <li><a href="{% url 'authentication' %}">LOG IN</a></li>
+                    <li><a href="{% url 'profile' %}">PROFILE</a></li>
+                    <li><a href="{% url 'boatspaces' %}">RESERVATIONS</a></li>
+                    <li><a href="{% url 'index' %}">HOME</a></li>
+                    <li id="biz-name"><a href="{% url 'index' %}">MARINA</a></li>
+                </ul>
+            </nav>
+        {% endblock %}
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

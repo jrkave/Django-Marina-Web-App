@@ -1,0 +1,23 @@
+{% extends "marina/base.html" %}
+
+{% load static %}
+{% block background_image %}{% static 'marina/images/home.jpg' %}{% endblock %}
+
+{% block description %}MARINA Home{% endblock %}
+
+{% block content %}
+<div class="intro">
+    <h2>Reserve Your Spot</h2>
+    <p id="desc">MARINA makes slot reservation on our marina hassle-free. Simply
+    upload your boat registration and license, pick a slot, 
+    bring your boat, and get ready to ride.
+    </p>
+    <p id="button">START NOW</p>
+</div>
+<div class="footer">
+    <p>524 Marina Ave</p>
+    <p>Sausalito, CA 94965</p>
+    <!-- <p>(415) 881-2677</p>
+    <p>marina@marina.com</p> -->
+</div>
+{% endblock %}
