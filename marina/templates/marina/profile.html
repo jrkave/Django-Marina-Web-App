@@ -2,3 +2,59 @@
 
 {% load static %}
 {% block background_image %}{% static 'marina/images/profile.jpg' %}{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1>Welcome, {{ user.username }}!</h1>
+    
+    <!-- Buttons for Registering License, Boats, and BoatSpaces -->
+    <div class="my-4">
+      <a href="{% url 'license' %}" class="btn btn-primary">Register License</a>
+      <a href="{% url 'registration' %}" class="btn btn-primary">Register Boats</a>
+      <a href="{% url 'boatspace-list' %}" class="btn btn-primary">Register BoatSpaces</a>
+    </div>
+    
+    <!-- Display User Attributes -->
+    <div class="my-4">
+      <h2>Your Profile</h2>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+      <p><strong>Has Valid License:</strong> {% if user.has_valid_license %}Yes{% else %}No{% endif %}</p>
+      <p><strong>Has Valid Insurance:</strong> {% if user.has_valid_insurance %}Yes{% else %}No{% endif %}</p>
+    </div>
+    
+    <!-- Display License Information -->
+    {% if user.boatlicense %}
+      <div class="my-4">
+        <h2>Your Boat License</h2>
+        <p><strong>License Number:</strong> {{ user.boatlicense.license_num }}</p>
+        <p><strong>License Expiry Date:</strong> {{ user.boatlicense.license_expiry_date }}</p>
+      </div>
+    {% endif %}
+    
+    <!-- Display Registered Boats -->
+    {% if user.boat_set.all %}
+      <div class="my-4">
+        <h2>Your Registered Boats</h2>
+        <ul>
+          {% for boat in user.boat_set.all %}
+            <li>{{ boat.name }} - {{ boat.type }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    
+    <!-- Display Reserved BoatSpaces -->
+    {% if user.boatspace_set.all %}
+      <div class="my-4">
+        <h2>Your Reserved BoatSpaces</h2>
+        <ul>
+          {% for boatspace in user.boatspace_set.all %}
+            <li>{{ boatspace.id }} - {% if boatspace.boat %}{{ boatspace.boat.name }}{% else %}No Boat{% endif %}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

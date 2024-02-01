@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
 
-# Extending User model using 1-1 link
+# Extending django.auth default User model 
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(max_length=254)
@@ -18,11 +18,6 @@ class CustomUser(AbstractUser):
         """String for representing UserProfile object"""
         return self.username
     
-    def get_absolute_url(self):
-        """Returns URL to access particular instance of the model"""
-        # TO DO: URL mapping, view, template 
-        return reverse("model_detail", kwargs={"pk": self.pk})
-
 class Boat(models.Model):
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=50)
@@ -31,15 +26,11 @@ class Boat(models.Model):
     def __str__(self):
         return f'{self.name}, {self.type}, {self.owner}'
 
-    def get_absolute_url(self):
-        return reverse("model_detail", kwargs={"pk": self.pk})
-
 class BoatSpace(models.Model):
     availability_status = models.BooleanField(default=True)
     reserve_start = models.DateTimeField(null=True, blank=True)
     reserve_end = models.DateTimeField(null=True, blank=True)
-    renter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    boat = models.ForeignKey(Boat, on_delete=models.CASCADE)
+    boat = models.ForeignKey(Boat, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):
         return str(self.id)
@@ -47,3 +38,26 @@ class BoatSpace(models.Model):
     def get_absolute_url(self):
         return reverse("boatspace-detail", kwargs={"pk": self.pk})
     
+    def clear_attributes(self):
+        # Clear attributes when renting period ends
+        self.availability_status = True
+        self.reserve_start = None
+        self.reserve_end = None
+        self.boat = None
+        self.save()
+
+class BoatLicense(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    license_num = models.CharField(max_length=50)
+    license_expiry_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.user.username}'s Boat License with number {self.license_num}"
+    
+class BoatRegistration(models.Model):
+    boat = models.OneToOneField(Boat, on_delete=models.CASCADE)
+    hull_id = models.CharField(max_length=40)
+
+    def __str__(self):
+        return f"Registration for {self.boat.owner.username}'s boat {self.boat.name} with hull id {self.hull_id}"
+

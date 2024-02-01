@@ -1,0 +1,13 @@
+{% extends 'marina/base.html' %}
+
+{% load static %}
+{% block background_image %}{% static 'marina/images/reservations.jpg' %}{% endblock %}
+
+{% block content %}
+<h1>Boat Registration</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

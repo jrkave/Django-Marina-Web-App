@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import CustomUser, Boat, BoatSpace
+from .models import CustomUser, Boat, BoatSpace, BoatLicense, BoatRegistration
 
 # Register your models here.
 
@@ -16,7 +16,15 @@ class BoatAdmin(admin.ModelAdmin):
 
 @admin.register(BoatSpace)
 class BoatSpaceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'availability_status', 'reserve_start', 'reserve_end', 'renter', 'boat')
+    list_display = ('id', 'availability_status', 'reserve_start', 'reserve_end', 'boat')
+
+@admin.register(BoatLicense)
+class BoatLicenseAdmin(admin.ModelAdmin):
+    list_display = ('user', 'license_num', 'license_expiry_date')
+    
+@admin.register(BoatRegistration)
+class BoatRegistrationAdmin(admin.ModelAdmin):
+    list_display = ('hull_id', 'boat')
 
 # admin.site.register(CustomUser, UserAdmin)
 # admin.site.register(Boat)
