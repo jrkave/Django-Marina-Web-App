@@ -1,14 +1,17 @@
 {% extends "marina/base.html" %}
 
 {% load static %}
-{% block background_image %}{% static 'marina/images/auth.jpg' %}{% endblock %}
+{% block background_image %}{% static 'marina/images/reservations.jpg' %}{% endblock %}
 
 {% block content %}
-  <h1>Boat Id: {{ boatspace.id }}</h1>
-  <p>Availability Status: {{ boatspace.availability_status }}</p>
-  <!-- author detail link not yet defined -->
-  <p>Reserve Start: {{ boatspace.reserve_start }}</p>
-  <p>Reserve End: {{ boatspace.reserve_end }}</p>
-  <!-- <p>Renter: {{ boatspace.renter }}</p>
-  <p>Owner: {{ boatspace.owner}}</p> -->
+{% if boatspace %}
+    <h1>Boat Id: {{ boatspace.id }}</h1>
+    <p>Availability Status: {{ boatspace.availability_status }}</p>
+    <p>Reserve Start: {{ boatspace.reserve_start }}</p>
+    <p>Reserve End: {{ boatspace.reserve_end }}</p>
+    <!-- TO DO: Link to renter, boats detail view -->
+{% else %}
+    <p>No BoatSpace found.</p>
+{% endif %}
+
 {% endblock %}

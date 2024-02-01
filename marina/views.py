@@ -19,11 +19,14 @@ def profile(request):
 
 # Generic views
 class BoatSpaceListView(generic.ListView):
+    # 'boatspace_list' is default context_object_name
     model = BoatSpace
-    context_object_name = 'boatspace_list' # name for list as template variable
-
+    template_name = 'marina/boatspace_list.html'
+ 
 class BoatSpaceDetailView(generic.DetailView):
+    # 'boatspace' is default context_object_name
     model = BoatSpace
+    template_name = 'marina/boatspace_detail.html'
     
 
 

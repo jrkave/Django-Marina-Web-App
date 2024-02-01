@@ -1,10 +1,10 @@
 {% extends "marina/base.html" %}
 
 {% load static %}
-{% block background_image %}{% static 'marina/images/auth.jpg' %}{% endblock %}
+{% block background_image %}{% static 'marina/images/reservations.jpg' %}{% endblock %}
 
 {% block content %}
-  <h1>Spaces Available</h1>
+  <h1>Spaces Available:</h1>
   {% if boatspace_list %}
     <ul>
       {% for boatspace in boatspace_list %}

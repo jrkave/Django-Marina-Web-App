@@ -45,5 +45,5 @@ class BoatSpace(models.Model):
         return str(self.id)
     
     def get_absolute_url(self):
-        return reverse("model_detail", kwargs={"pk": self.pk})
+        return reverse("boatspace-detail", kwargs={"pk": self.pk})
     
