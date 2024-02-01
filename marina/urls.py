@@ -4,9 +4,11 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('authentication/', views.auth, name='authentication'),
-    path('reservations/', views.reservations, name='reservations'),
     path('profile/', views.profile, name='profile'),
     path('boatspaces/', views.BoatSpaceListView.as_view(), name='boatspace-list'),
-    path('boatspaces/<int:pk>/', views.BoatSpaceDetailView.as_view(), name='boatspace-detail')
+    path('boatspaces/<int:pk>/', views.BoatSpaceDetailView.as_view(), name='boatspace-detail'),
+    path('login/', views.user_login, name='login'),
+    path('signup/', views.user_signup, name='signup'),
+    path('logout/', views.user_logout, name='logout'),
+    path('success', views.success, name='success'),
 ]
