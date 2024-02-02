@@ -71,3 +71,11 @@ h2 {
 #btn2, #btn3 {
     margin-left: 20px;
 }
+
+#space-detail li a {
+    color: rgb(62, 82, 100);
+}
+
+#space-detail li a:hover {
+    color: rgb(212, 146, 81);
+}

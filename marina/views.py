@@ -128,11 +128,3 @@ class BoatSpaceListView(generic.ListView):
     def get_available_boats_count(self):
         # Retrieve the count of available boatspaces
         return BoatSpace.objects.filter(availability_status=True).count()
- 
-class BoatSpaceDetailView(generic.DetailView):
-    # 'boatspace' is default context_object_name
-    model = BoatSpace
-    template_name = 'marina/boatspace_detail.html'
-    
-
-

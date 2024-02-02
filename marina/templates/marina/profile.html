@@ -39,7 +39,7 @@
         <h2>Registered Boats</h2>
         <ol>
           {% for boat in user.boat_set.all %}
-            <li>{{ boat.boat_name }}</li>
+            <li>{{ boat.boat_name }}: {{ boat.type }}</li>
           {% endfor %}
         </ol>
     {% else %}
@@ -51,9 +51,9 @@
     <div class="attributes-section" id="attr-4">
       <h2>Reserved Spaces</h2>
       {% if user_boatspaces %}
-          <ol>
+          <ol id="space-detail">
               {% for boatspace in user_boatspaces %}
-                  <li>Space {{ boatspace.id }}</li>
+                <li>Space {{boatspace.id}} | Reserved on {{boatspace.reserve_start}} | Reserved until {{boatspace.reserve_end}}</a></li>
               {% endfor %}
           </ol>
       {% else %}
