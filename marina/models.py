@@ -10,13 +10,16 @@ class CustomUser(AbstractUser):
     email = models.EmailField(max_length=254)
     phone_number = PhoneNumberField()
     has_valid_license = models.BooleanField(default=False)
-    has_valid_insurance = models.BooleanField(default=False)
     
     USERNAME_FIELD = 'username'
     
     def __str__(self):
         """String for representing UserProfile object"""
         return self.username
+
+    def set_valid_license(self):
+        self.has_valid_license = True
+        self.save()
     
 class Boat(models.Model):
     boat_name = models.CharField(max_length=100)
@@ -28,8 +31,8 @@ class Boat(models.Model):
 
 class BoatSpace(models.Model):
     availability_status = models.BooleanField(default=True)
-    reserve_start = models.DateTimeField(null=True, blank=True)
-    reserve_end = models.DateTimeField(null=True, blank=True)
+    reserve_start = models.DateField(null=True, blank=True)
+    reserve_end = models.DateField(null=True, blank=True)
     boat = models.ForeignKey(Boat, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):

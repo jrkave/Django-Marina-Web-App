@@ -18,19 +18,18 @@
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
         <p><strong>Has Valid License:</strong> {% if user.has_valid_license %}Yes{% else %}No{% endif %}</p>
-        <p><strong>Has Valid Insurance:</strong> {% if user.has_valid_insurance %}Yes{% else %}No{% endif %}</p>
       </div>
       
       <!-- Display License Information -->
     <div class="attributes-section" id="attr-2">
     {% if user.boatlicense %}
       <h2>Boating License</h2>
-      <p><strong>License Number:</strong> {{ user.boatlicense.license_num }}</p>
-      <p><strong>License Expiry Date:</strong> {{ user.boatlicense.license_expiry_date }}</p>
+      <p><strong>License Number: </strong> {{ user.boatlicense.license_num }}</p>
+      <p><strong>License Expiry Date: </strong> {{ user.boatlicense.license_expiry_date }}</p>
     {% else %}
       <h2>Boating License</h2>
-      <p><strong>License Number:</strong>Not submitted</p>
-      <p><strong>License Expiry Date:</strong>Not submitted</p>
+      <p><strong>License Number: </strong>Not submitted</p>
+      <p><strong>License Expiry Date: </strong>Not submitted</p>
     {% endif %}
     </div>
       
@@ -48,23 +47,21 @@
         <p>None</p>
     {% endif %}
     </div>
-      
-    <!-- Display Reserved BoatSpaces -->
+
     <div class="attributes-section" id="attr-4">
-    {% if user.boatspace_set.all %}
       <h2>Reserved Spaces</h2>
-      <ul>
-        {% for boatspace in user.boatspace_set.all %}
-          <li>{{ boatspace.id }} - {% if boatspace.boat %}{{ boatspace.boat.name }}{% else %}No Boat{% endif %}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <h2>Reserved Spaces</h2>
-      <p>None</p>
-    {% endif %}
+      {% if user_boatspaces %}
+          <ol>
+              {% for boatspace in user_boatspaces %}
+                  <li>Space {{ boatspace.id }}</li>
+              {% endfor %}
+          </ol>
+      {% else %}
+          <p>None</p>
+      {% endif %}
     </div>
-    </div>
-    <br></br>
+  </div>
+  <br></br>
 
     <!-- Buttons for Registering License, Boats, and BoatSpaces -->
     <div class="buttons">

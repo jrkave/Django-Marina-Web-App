@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth import authenticate, login, logout
 
+from datetime import datetime, time
+
 from .forms import SignupForm, LoginForm, BoatLicenseForm, BoatForm, BoatSpaceForm
 from .models import BoatSpace
 
@@ -10,8 +12,18 @@ def index(request):
     """View function for home page"""
     return render(request, 'marina/index.html')
 
+from django.shortcuts import render
+from .models import BoatSpace
+
 def profile(request):
-    return render(request, 'marina/profile.html')
+    user = request.user
+
+    # Filter boatspaces based on the user's username
+    user_boatspaces = BoatSpace.objects.filter(boat__owner=user)
+
+    # Pass the user_boatspaces to the template context
+    context = {'user_boatspaces': user_boatspaces}
+    return render(request, 'marina/profile.html', context)
 
 def success(request):
     return render(request, 'marina/success.html')
@@ -49,12 +61,14 @@ def user_logout(request):
 
 # Register a BoatLicense 
 def submit_license(request):
+    user = request.user
     if request.method == 'POST':
         form = BoatLicenseForm(request.POST)
         if form.is_valid():
             license_registration = form.save(commit=False)
             license_registration.user = request.user
             license_registration.save()
+            user.set_valid_license()
             return redirect('success')
     else:
         form = BoatLicenseForm()

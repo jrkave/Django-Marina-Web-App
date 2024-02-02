@@ -8,7 +8,7 @@
 {% block content %}
 <div class="outside">
 <h1>Reserve Space {{boatspace.id}}:</h1>
-<p id="date-note">Date must be in the format of </p>
+<p id="date-note">Note: 'Reserve start' field uses format YYYY-MM-DD</p>
 <div class="container">
     <form method="POST">
         {% csrf_token %}
