@@ -28,7 +28,7 @@ def user_signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')
+            return redirect('index')
     else:
         form = SignupForm()
     return render(request, 'marina/signup.html', {'form': form, 'form_css': 'marina/css/forms.css'})
@@ -43,7 +43,7 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)    
-                return redirect('success')
+                return redirect('index')
     else:
         form = LoginForm()
     return render(request, 'marina/login.html', {'form': form, 'form_css': 'marina/css/forms.css'})
@@ -51,7 +51,7 @@ def user_login(request):
 # Logout Page
 def user_logout(request):
     logout(request)
-    return redirect('success')
+    return redirect('index')
 
 # Register a BoatLicense 
 def submit_license(request):

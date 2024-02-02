@@ -38,11 +38,11 @@
     <div class="attributes-section" id="attr-3">
     {% if user.boat_set.all %}
         <h2>Registered Boats</h2>
-        <ul>
+        <ol>
           {% for boat in user.boat_set.all %}
-            <li>{{ boat.name }} - {{ boat.type }}</li>
+            <li>{{ boat.boat_name }}</li>
           {% endfor %}
-        </ul>
+        </ol>
     {% else %}
         <h2>Registered Boats</h2>
         <p>None</p>
@@ -68,8 +68,9 @@
 
     <!-- Buttons for Registering License, Boats, and BoatSpaces -->
     <div class="buttons">
-      <a id="btn1" href="{% url 'license' %}" class="btn btn-primary">Register License</a>
-      <a id="btn2" href="{% url 'boatspace-list' %}" class="btn btn-primary">Reserve a Space</a>
+      <a id="btn1" href="{% url 'license' %}">Register License</a>
+      <a id="btn2" href="{% url 'add_boat' %}">Register a Boat</a>
+      <a id="btn3" href="{% url 'boatspace-list' %}">Reserve a Space</a>
     </div>
 
   </div>
