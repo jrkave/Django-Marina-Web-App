@@ -101,13 +101,6 @@ def edit_boatspace(request, boatspace_id):
 
     return render(request, 'marina/edit_boatspace.html', {'form': form, 'form_css': 'marina/css/forms.css', 'boatspace': boatspace})
 
-
-# # Generic views
-# class BoatSpaceListView(generic.ListView):
-#     # 'boatspace_list' is default context_object_name
-#     model = BoatSpace
-#     template_name = 'marina/boatspace_list.html'
- 
 class BoatSpaceListView(generic.ListView):
     model = BoatSpace
     template_name = 'marina/boatspace_list.html'

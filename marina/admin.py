@@ -22,7 +22,6 @@ class BoatSpaceAdmin(admin.ModelAdmin):
 class BoatLicenseAdmin(admin.ModelAdmin):
     list_display = ('user', 'license_num', 'license_expiry_date')
 
-
 # admin.site.register(CustomUser, UserAdmin)
 # admin.site.register(Boat)
 # admin.site.register(BoatSpace)

@@ -24,7 +24,7 @@ class Boat(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f'{self.name}, {self.type}, {self.owner}'
+        return f'{self.boat_name}, {self.type}, {self.owner}'
 
 class BoatSpace(models.Model):
     availability_status = models.BooleanField(default=True)

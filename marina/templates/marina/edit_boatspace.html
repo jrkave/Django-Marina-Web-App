@@ -1,13 +1,20 @@
 {% extends 'marina/base.html' %}
-
 {% load static %}
 {% block background_image %}{% static 'marina/images/reservations.jpg' %}{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "marina/css/reserve.css" %}">
+{% endblock %}
 
 {% block content %}
-<h1>Reserve a Slot</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Reserve</button>
-</form>
+<div class="outside">
+<h1>Reserve Space {{boatspace.id}}:</h1>
+<p id="date-note">Date must be in the format of </p>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Reserve</button>
+    </form>
+</div>
+</div>
 {% endblock %}

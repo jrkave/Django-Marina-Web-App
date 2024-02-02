@@ -8,20 +8,28 @@
 {% block content %}
 <div class="outside">
   <h1>Available Spaces: {{ available_boats_count }} </h1>
+  <p id="note">Click on a cell to reserve that space. Note that you must be logged in before you can reserve a space.</p>
+    <table>
+      {% for boatspace in boatspace_list %}
+        {% if forloop.counter0|divisibleby:4 %}
+          <tr>
+        {% endif %}
+        {% if boatspace.availability_status %}
+          <td>
+            {% if user.is_authenticated %}
+              <a href="{% url 'edit_boatspace' boatspace_id=boatspace.id %}">{{ boatspace.id }}</a>
+            {% else %}
+              {{ boatspace.id }}
+            {% endif %}
+          </td>
+        {% else %}
+          <td>N/A</td>
+        {% endif %}
+        {% if forloop.counter|divisibleby:4 or forloop.last %}
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </table> 
   <br></br>
-  <ul>
-    {% for boatspace in boatspace_list %}
-      {% if boatspace.availability_status %}
-      <li>
-        <a href="{{ boatspace.get_absolute_url }}">{{ boatspace.id }}</a>
-        ({{boatspace.availability_status}})
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  </div>
+</div>
 {% endblock %}
-
-
-
-

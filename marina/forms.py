@@ -28,7 +28,7 @@ class BoatSpaceForm(forms.ModelForm):
     class Meta:
         model = BoatSpace
         fields = ['reserve_start', 'boat']
-        
+
     def save(self, commit=True):
         boatspace = super().save(commit=False)
         

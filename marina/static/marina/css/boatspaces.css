@@ -15,6 +15,7 @@
     border-radius: 10px;
     width: 80%;
     margin-top: 20px;
+    align-items: center;
 }
 
 h1 {
@@ -26,6 +27,34 @@ h1 {
     padding: 40px 40px 0 40px;
 }
 
-p {
-    color:black;
+table {
+    padding: 10px;
+    width: 60%;
+    text-align: center;
+
+}
+
+td, th {
+    border-bottom: 1px;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+table a:link, table a:visited {
+    color: rgb(62, 82, 100);
+}
+
+table a:hover {
+    color: rgb(212, 146, 81);
+}
+
+#note {
+    color: rgb(62, 82, 100);
+    padding: 0px 40px 0px 40px;
 }
