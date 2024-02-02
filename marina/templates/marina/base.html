@@ -25,24 +25,24 @@
     {% endblock %}
 </head>
 <body>
-    <div class="container">
-        {% block sidebar %}
-            <nav role="navigation">
+    <div class="navigation">
+    {% block sidebar %}
+        <nav role="navigation">
+            {% if user.is_authenticated %}
                 <ul>
-                    {% if user.is_authenticated %}
-                        <li id="log-out"><a href="{% url 'logout' %}">LOG OUT</a></li>
-                        <li><a href="{% url 'profile' %}">{{ user.username|capfirst|upper }}</a></li>
-                    {% else %}
-                        <li id="new-acc"><a href="{% url 'signup' %}">SIGN UP</a></li>
-                        <li><a href="{% url 'login' %}">LOG IN</a></li>
-                    {% endif %}
+                    <li id="log-out"><a href="{% url 'logout' %}">LOG OUT</a></li>
+                    <li><a href="{% url 'profile' %}">{{ user.username|capfirst|upper }}</a></li>
+            {% else %}
+                    <li id="new-acc"><a href="{% url 'signup' %}">SIGN UP</a></li>
+                    <li><a href="{% url 'login' %}">LOG IN</a></li>
+            {% endif %}
                     <li><a href="{% url 'boatspace-list' %}">RESERVATIONS</a></li>
                     <li><a href="{% url 'index' %}">HOME</a></li>
-                    <li id="biz-name"><a href="{% url 'index' %}">MARINA</a></li>
+                    <!-- <li id="biz-name"><a href="{% url 'index' %}">MARINA</a></li> -->
                 </ul>
-            </nav>
-        {% endblock %}
+        </nav>
     </div>
+    {% endblock %}
 
     <div class="content">
         {% block content %}
@@ -53,3 +53,4 @@
     {% block scripts %}{% endblock %}
 </body>
 </html>
+

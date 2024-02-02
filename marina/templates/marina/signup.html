@@ -1,16 +1,20 @@
 {% extends 'marina/base.html' %}
 {% load static %}
-{% block background_image %}{% static 'marina/images/home.jpg' %}{% endblock %}
+{% block background_image %}{% static 'marina/images/auth.jpg' %}{% endblock %}
 {% block extrahead %}
-<link rel="stylesheet" href="{% static "marina/css/index.css" %}">
+<link rel="stylesheet" href="{% static "marina/css/signup.css" %}">
 {% endblock %}
 
 {% block content %}
-<h1>Signup</h1>
-<form method="POST" class="styled-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Signup</button>
-    <a href="{% url 'login' %}">Already have account?</a>
-</form>
+<div class="outside">
+<h1>Sign Up</h1>
+<div class="container">
+    <form method="POST" class="styled-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Signup</button>
+        <a id="form-url" href="{% url 'login' %}">Already have account?</a>
+    </form>
+</div>
+</div>
 {% endblock %}

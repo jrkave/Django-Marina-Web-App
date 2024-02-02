@@ -37,11 +37,11 @@ h2 {
 
 .footer {
     float: left;
-    position: relative; top: 375px; right: 130px;
+    position: relative; top: 400px; right: 130px;
 }
 
 .footer p {
     color: white;
     line-height: 10px;
-    font-family: 'Lato', sans-serif;
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
 }
