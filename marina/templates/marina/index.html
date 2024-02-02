@@ -12,7 +12,11 @@
     upload your boat registration and license, pick a slot, 
     bring your boat, and get ready to ride.
     </p>
-    <p id="button">START NOW</p>
+    {% if user.is_authenticated %}
+        <p id="button"><a href="{% url 'boatspace-list' %}">RESERVE</a></p>
+    {% else %}
+        <p id="button"><a href="{% url 'signup' %}">START NOW</a></p>
+    {% endif %}
 </div>
 <div class="footer">
     <p>524 Marina Ave</p>

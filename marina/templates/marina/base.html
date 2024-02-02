@@ -9,12 +9,16 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <!-- Load static pages -->
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'marina/css/styles.css' %}"/>
+        <!-- Use CSS for form -->
+        {% if form_css %}
+        <link rel="stylesheet" type="text/css" href="{% static form_css %}" />
+        {% endif %}
         <style>
             html {
                 background-image: url('{% block background_image %}{% endblock %}');
-                /* Add other background styles as needed */
             }
         </style>
     {% endblock %}
@@ -24,9 +28,13 @@
         {% block sidebar %}
             <nav role="navigation">
                 <ul>
-                    <li id="new-acc"><a href="{% url 'signup' %}">SIGN UP</a></li>
-                    <li><a href="{% url 'login' %}">LOG IN</a></li>
-                    <li><a href="{% url 'profile' %}">PROFILE</a></li>
+                    {% if user.is_authenticated %}
+                        <li id="log-out"><a href="{% url 'logout' %}">LOG OUT</a></li>
+                        <li><a href="{% url 'profile' %}">{{ user.username|capfirst|upper }}</a></li>
+                    {% else %}
+                        <li id="new-acc"><a href="{% url 'signup' %}">SIGN UP</a></li>
+                        <li><a href="{% url 'login' %}">LOG IN</a></li>
+                    {% endif %}
                     <li><a href="{% url 'boatspace-list' %}">RESERVATIONS</a></li>
                     <li><a href="{% url 'index' %}">HOME</a></li>
                     <li id="biz-name"><a href="{% url 'index' %}">MARINA</a></li>

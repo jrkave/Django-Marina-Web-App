@@ -31,7 +31,7 @@ def user_signup(request):
             return redirect('success')
     else:
         form = SignupForm()
-    return render(request, 'marina/signup.html', {'form': form})
+    return render(request, 'marina/signup.html', {'form': form, 'form_css': 'marina/css/forms.css'})
 
 # Login Page
 def user_login(request):
@@ -46,7 +46,7 @@ def user_login(request):
                 return redirect('success')
     else:
         form = LoginForm()
-    return render(request, 'marina/login.html', {'form': form})
+    return render(request, 'marina/login.html', {'form': form, 'form_css': 'marina/css/forms.css'})
 
 # Logout Page
 def user_logout(request):
@@ -64,7 +64,7 @@ def submit_license(request):
             return redirect('success')
     else:
         form = BoatLicenseForm()
-    return render(request, 'marina/license.html', {'form': form})
+    return render(request, 'marina/license.html', {'form': form, 'form_css': 'marina/css/forms.css',})
 
 # Register a BoatRegistration
 def submit_registration(request):
@@ -77,7 +77,7 @@ def submit_registration(request):
             return redirect('success')
     else:
         form = BoatRegistrationForm()
-    return render(request, 'marina/registration.html', {'form': form})
+    return render(request, 'marina/registration.html', {'form': form, 'form_css': 'marina/css/forms.css',})
 
 # Register a Boat
 def register_boat(request):
@@ -89,7 +89,7 @@ def register_boat(request):
             return redirect('success')
     else:
         form = BoatForm()
-    return render(request, 'marina/add_boat.html', {'form': form})
+    return render(request, 'marina/add_boat.html', {'form': form, 'form_css': 'marina/css/forms.css',})
 
 # Register a BoatSpace 
 def register_boatspace(request):
@@ -101,7 +101,7 @@ def register_boatspace(request):
             return redirect('success')
     else:
         form = BoatSpaceForm()
-    return render(request, 'marina/register_boatspace.html', {'form': form})
+    return render(request, 'marina/register_boatspace.html', {'form': form, 'form_css': 'marina/css/forms.css',})
 
 # Edit a BoatSpace
 def edit_boatspace(request, boatspace_id):
@@ -118,7 +118,7 @@ def edit_boatspace(request, boatspace_id):
         # Populate the form with the existing data for display
         form = BoatSpaceForm(instance=boatspace)
 
-    return render(request, 'marina/edit_boatspace.html', {'form': form, 'boatspace': boatspace})
+    return render(request, 'marina/edit_boatspace.html', {'form': form, 'form_css': 'marina/css/forms.css', 'boatspace': boatspace})
 
 # Generic views
 class BoatSpaceListView(generic.ListView):
