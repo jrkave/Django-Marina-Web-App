@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth import authenticate, login, logout
 
-from .forms import SignupForm, LoginForm, BoatLicenseForm, BoatRegistrationForm, BoatForm, BoatSpaceForm
+from .forms import SignupForm, LoginForm, BoatLicenseForm, BoatForm, BoatSpaceForm
 from .models import BoatSpace
 
 # Create your views here.
@@ -65,19 +65,6 @@ def submit_license(request):
     else:
         form = BoatLicenseForm()
     return render(request, 'marina/license.html', {'form': form, 'form_css': 'marina/css/forms.css',})
-
-# Register a BoatRegistration
-def submit_registration(request):
-    if request.method == 'POST':
-        form = BoatRegistrationForm(request.POST)
-        if form.is_valid():
-            boat_registration = form.save(commit=False)
-            boat_registration.user = request.user  # Associate the registration with the currently-logged-in user
-            boat_registration.save()
-            return redirect('success')
-    else:
-        form = BoatRegistrationForm()
-    return render(request, 'marina/registration.html', {'form': form, 'form_css': 'marina/css/forms.css',})
 
 # Register a Boat
 def register_boat(request):

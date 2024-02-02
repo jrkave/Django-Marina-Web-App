@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import CustomUser, Boat, BoatSpace, BoatLicense, BoatRegistration
+from .models import CustomUser, Boat, BoatSpace, BoatLicense
 
 # Register your models here.
 
@@ -10,9 +10,9 @@ class CustomUserAdmin(admin.ModelAdmin):
     """Changes how the model is displayed in admin interface"""
     list_display = ('username', 'email', 'phone_number')
 
-@admin.register(Boat) 
+@admin.register(Boat)
 class BoatAdmin(admin.ModelAdmin):
-    list_display = ('name', 'type', 'owner')
+    list_display = ('boat_name', 'type', 'owner')
 
 @admin.register(BoatSpace)
 class BoatSpaceAdmin(admin.ModelAdmin):
@@ -21,10 +21,7 @@ class BoatSpaceAdmin(admin.ModelAdmin):
 @admin.register(BoatLicense)
 class BoatLicenseAdmin(admin.ModelAdmin):
     list_display = ('user', 'license_num', 'license_expiry_date')
-    
-@admin.register(BoatRegistration)
-class BoatRegistrationAdmin(admin.ModelAdmin):
-    list_display = ('hull_id', 'boat')
+
 
 # admin.site.register(CustomUser, UserAdmin)
 # admin.site.register(Boat)

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from datetime import timedelta
-from .models import CustomUser, Boat, BoatSpace, PhoneNumberField, BoatRegistration, BoatLicense
+from .models import CustomUser, Boat, BoatSpace, PhoneNumberField, BoatLicense
 
 # Create your forms here. 
 class SignupForm(UserCreationForm):
@@ -22,7 +22,7 @@ class LoginForm(forms.Form):
 class BoatForm(forms.ModelForm):
     class Meta:
         model = Boat
-        fields = ['name', 'type', 'owner']
+        fields = ['boat_name', 'type', 'owner']
 
 class BoatSpaceForm(forms.ModelForm):
     class Meta:
@@ -40,11 +40,6 @@ class BoatSpaceForm(forms.ModelForm):
             boatspace.save()
             
         return boatspace
-
-class BoatRegistrationForm(forms.ModelForm):
-    class Meta:
-        model = BoatRegistration
-        fields = ['boat', 'hull_id']
 
 class BoatLicenseForm(forms.ModelForm):
     username = forms.CharField(max_length=40)

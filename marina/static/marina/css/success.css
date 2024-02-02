@@ -8,27 +8,25 @@
     margin: 0; 
 }
 
-.outside {
+.container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-color: white;
     padding-bottom: 40px;
     border-radius: 10px;
-}
-
-.container {
-    position: relative;
-    padding: 20px;
-    width: 500px; 
+    margin-bottom: 50px;
 }
 
 h1 {
     color: rgb(62, 82, 100);
-    text-align: center;
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
     margin: 0;
-    padding: 40px 40px 0 40px;
+    padding: 60px 60px 0 60px;
+}
+
+p {
+    color: rgb(77, 77, 77);
+    padding: 10px 60px 10px 60px;
 }

@@ -1,13 +1,19 @@
 {% extends 'marina/base.html' %}
-
 {% load static %}
 {% block background_image %}{% static 'marina/images/reservations.jpg' %}{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "marina/css/license.css" %}">
+{% endblock %}
 
 {% block content %}
+<div class="outside">
 <h1>License Registration</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</div>
+</div>
 {% endblock %}

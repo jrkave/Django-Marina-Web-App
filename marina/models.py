@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
         return self.username
     
 class Boat(models.Model):
-    name = models.CharField(max_length=100)
+    boat_name = models.CharField(max_length=100)
     type = models.CharField(max_length=50)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     
@@ -53,11 +53,4 @@ class BoatLicense(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Boat License with number {self.license_num}"
-    
-class BoatRegistration(models.Model):
-    boat = models.OneToOneField(Boat, on_delete=models.CASCADE)
-    hull_id = models.CharField(max_length=40)
-
-    def __str__(self):
-        return f"Registration for {self.boat.owner.username}'s boat {self.boat.name} with hull id {self.hull_id}"
 

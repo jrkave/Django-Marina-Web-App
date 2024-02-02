@@ -1,8 +1,14 @@
 {% extends 'marina/base.html' %}
-
 {% load static %}
 {% block background_image %}{% static 'marina/images/auth.jpg' %}{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "marina/css/success.css" %}">
+{% endblock %}
 
 {% block content %}
-<p>"Success!"</p>
+<div class="container">
+    <h1>Success!</h1>
+    <br></br>
+    <p>Your request has been successfully processed.</p>
+</div>
 {% endblock %}
