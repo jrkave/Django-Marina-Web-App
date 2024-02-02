@@ -10,12 +10,6 @@ def index(request):
     """View function for home page"""
     return render(request, 'marina/index.html')
 
-def auth(request):
-    return render(request, 'marina/auth.html')
-
-def reservations(request):
-    return render(request, 'marina/reservations.html')
-
 def profile(request):
     return render(request, 'marina/profile.html')
 
@@ -107,11 +101,26 @@ def edit_boatspace(request, boatspace_id):
 
     return render(request, 'marina/edit_boatspace.html', {'form': form, 'form_css': 'marina/css/forms.css', 'boatspace': boatspace})
 
-# Generic views
+
+# # Generic views
+# class BoatSpaceListView(generic.ListView):
+#     # 'boatspace_list' is default context_object_name
+#     model = BoatSpace
+#     template_name = 'marina/boatspace_list.html'
+ 
 class BoatSpaceListView(generic.ListView):
-    # 'boatspace_list' is default context_object_name
     model = BoatSpace
     template_name = 'marina/boatspace_list.html'
+    
+    def get_context_data(self, **kwargs):
+        # Get specific context for template (see func below)
+        context = super().get_context_data(**kwargs)
+        context['available_boats_count'] = self.get_available_boats_count()
+        return context
+
+    def get_available_boats_count(self):
+        # Retrieve the count of available boatspaces
+        return BoatSpace.objects.filter(availability_status=True).count()
  
 class BoatSpaceDetailView(generic.DetailView):
     # 'boatspace' is default context_object_name

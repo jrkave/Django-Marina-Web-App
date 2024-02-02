@@ -1,22 +1,27 @@
 {% extends 'marina/base.html' %}
-
 {% load static %}
 {% block background_image %}{% static 'marina/images/reservations.jpg' %}{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "marina/css/boatspaces.css" %}">
+{% endblock %}
 
 {% block content %}
-  <h1>Spaces Available:</h1>
-  {% if boatspace_list %}
-    <ul>
-      {% for boatspace in boatspace_list %}
-        {% if boatspace.availability_status %}
-        <li>
-          <a href="{{ boatspace.get_absolute_url }}">{{ boatspace.id }}</a>
-          ({{boatspace.availability_status}})
-        </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no spaces available.</p>
-  {% endif %}
+<div class="outside">
+  <h1>Available Spaces: {{ available_boats_count }} </h1>
+  <br></br>
+  <ul>
+    {% for boatspace in boatspace_list %}
+      {% if boatspace.availability_status %}
+      <li>
+        <a href="{{ boatspace.get_absolute_url }}">{{ boatspace.id }}</a>
+        ({{boatspace.availability_status}})
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  </div>
 {% endblock %}
+
+
+
+
