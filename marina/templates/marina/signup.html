@@ -1,7 +1,9 @@
 {% extends 'marina/base.html' %}
-
 {% load static %}
-{% block background_image %}{% static 'marina/images/auth.jpg' %}{% endblock %}
+{% block background_image %}{% static 'marina/images/home.jpg' %}{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "marina/css/index.css" %}">
+{% endblock %}
 
 {% block content %}
 <h1>Signup</h1>

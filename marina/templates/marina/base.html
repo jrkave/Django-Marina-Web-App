@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +10,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-        <!-- Load static pages -->
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'marina/css/styles.css' %}"/>
-        <!-- Use CSS for form -->
+        <link rel="stylesheet" href="{% static "marina/css/styles.css" %}">
+        {% block extrahead %}
+        <!-- Empty for extra css stylesheets -->
+        {% endblock %}
         {% if form_css %}
         <link rel="stylesheet" type="text/css" href="{% static form_css %}" />
         {% endif %}
