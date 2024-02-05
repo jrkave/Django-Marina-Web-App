@@ -51,13 +51,11 @@ User input is managed through forms defined in `marina/forms.py`. These forms ha
 
 ### Setup Instructions
 
-1. Make sure you are in the Django-Marina directory in your terminal. 
-2. Install dependencies using Pipenv:
-   ```pipenv sync```
-4. Activate the virtual environment:
-   ```pipenv shell```
-5. Run the development server:
-   ```python3 manage.py runserver```
+1. Install this project using ```git clone```.  
+2. Make sure you are in the directory of this project (Django-Marina) in your terminal. 
+3. Install dependencies using Pipenv with the command ```pipenv sync```.
+4. Activate the virtual environment with the command ```pipenv shell```.
+5. To run the development server, type ```python3 manage.py runserver```.
 6. Visit the link provided and add '/marina' add the end of the URL. **Do not** forget this step, or you will get a 404 error. The URL should look something like: http://localhost:8000/marina
 7. Explore!
 
