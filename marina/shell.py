@@ -1,4 +1,4 @@
-from .models import BoatSpace 
+from marina.models import BoatSpace 
 
 # Create and save 100 BoatSpace objects
 def create_spaces():
