@@ -51,7 +51,7 @@ User input is managed through forms defined in `marina/forms.py`. These forms ha
 
 ### Setup Instructions
 
-1. Install this project using ```git clone```.  
+1. Download this project using ```git clone```.  
 2. Make sure you are in the directory of this project (Django-Marina) in your terminal. 
 3. Install dependencies using Pipenv with the command ```pipenv sync```.
 4. Activate the virtual environment with the command ```pipenv shell```.
