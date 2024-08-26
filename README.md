@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Marina, a demo web application designed to streamline marina operations by providing users with tools to manage boat registrations, licenses, and marina space reservations.  
+Welcome to Marina, a web application designed to streamline marina operations by providing users with tools to manage boat registrations, licenses, and marina space reservations.  
 
 ### Key Functionalities
 
